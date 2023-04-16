@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 33
+        versionCode 17
+        versionName "1.91"
+        vectorDrawables.useSupportLibrary true
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+    compileOptions {
+        targetCompatibility 11
+        sourceCompatibility 11
+    }
+    lint {
+        abortOnError false
+    }
+    namespace 'com.dmitrybrant.android.cardboardmpo'
+    ndkVersion '23.1.7779620'
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.vr:sdk-base:1.190.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+}
